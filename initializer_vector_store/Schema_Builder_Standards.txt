@@ -1,0 +1,115 @@
+*Output Schema from Initializer Agent*
+
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://localservicespotlights.com/schemas/brandsitebuilder-init.json",
+  "$strict": true,
+  "title": "brandsitebuilder_schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "Phase",
+    "Status",
+    "Todo",
+    "Outputs"
+  ],
+  "properties": {
+    "Phase": {
+      "type": "string",
+      "enum": [
+        "CONFIG_INIT"
+      ],
+      "description": "The current workflow phase. Always CONFIG_INIT for this agent."
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "complete",
+        "incomplete",
+        "error"
+      ],
+      "description": "Phase completion status."
+    },
+    "Todo": {
+      "type": "array",
+      "description": "List of missing configuration items or required inputs to proceed.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "Outputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "notes",
+        "suggested_next_phase",
+        "initializer_result"
+      ],
+      "properties": {
+        "notes": {
+          "type": "string",
+          "description": "Developer or reviewer notes summarizing detection results, next steps, or plan summary."
+        },
+        "suggested_next_phase": {
+          "type": "string",
+          "description": "The next phase recommended by the agent, typically 'HYGIENE_BUILD'."
+        },
+        "clarifying_questions": {
+          "type": "array",
+          "description": "List of follow-up questions to resolve missing or ambiguous data.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "initializer_result": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "Domain",
+            "DetectedPATH",
+            "Status",
+            "NextStep",
+            "MissingFieldCount",
+            "Timestamp"
+          ],
+          "properties": {
+            "Domain": {
+              "type": "string",
+              "description": "The verified domain or placeholder if not yet provided."
+            },
+            "DetectedPATH": {
+              "type": "string",
+              "enum": [
+                "LSP",
+                "KAE"
+              ],
+              "description": "Automatically detected PATH based on GBP_URL, LSA_CATEGORY, or profession."
+            },
+            "Status": {
+              "type": "string",
+              "enum": [
+                "complete",
+                "incomplete",
+                "error"
+              ],
+              "description": "Current status of configuration validation."
+            },
+            "NextStep": {
+              "type": "string",
+              "description": "Instruction for the workflow to continue, pause, or request user input."
+            },
+            "MissingFieldCount": {
+              "type": "number",
+              "description": "Count of required configuration fields still missing or incomplete."
+            },
+            "Timestamp": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Timestamp of when the agent executed."
+            }
+          }
+        }
+      }
+    }
+  }
+}
