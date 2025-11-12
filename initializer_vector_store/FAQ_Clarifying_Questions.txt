@@ -1,0 +1,13 @@
+*Sample Clarifying Questions (for Initializer Agent reference)*
+
+1. What is your exact service area (cities or neighborhoods)?
+2. What is the link to your Google Business Profile (GBP_URL)?
+3. What are your top 5 proofs of credibility (media, awards, case studies)?
+4. Are there any name collisions or other people with the same name we should differentiate from?
+5. What is your primary offer and price point?
+6. Which photos or videos are approved for homepage hero usage?
+7. Are address and phone number public or private?
+8. Which social media profiles should be considered official?
+9. Do you have a mentions sheet or portfolio folder we can access?
+10. What is your brand color palette or primary hex values?
+11. Which logo and favicon should be used as defaults?
